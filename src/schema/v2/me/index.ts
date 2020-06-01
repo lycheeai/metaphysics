@@ -58,9 +58,9 @@ const Me = new GraphQLObjectType<any, ResolverContext>({
     },
     canRequestEmailConfirmation: {
       type: new GraphQLNonNull(GraphQLBoolean),
-      description:
-        "Allow the user to request email confirmation if they do not have a confirmed email",
-      resolve: ({ confirmed_at }) => !confirmed_at,
+      description: "Whether user is allowed to request email confirmation",
+      resolve: ({ can_request_email_confirmation }) =>
+        can_request_email_confirmation,
     },
     followsAndSaves: {
       type: new GraphQLObjectType<any, ResolverContext>({
@@ -136,6 +136,17 @@ const Me = new GraphQLObjectType<any, ResolverContext>({
         return notificationsFeedLoader(options).then(({ total_unread }) => {
           return total_unread || 0
         })
+      },
+    },
+    unreadConversationCount: {
+      type: new GraphQLNonNull(GraphQLInt),
+      description: "The count of conversations with unread messages.",
+      resolve: (_root, _options, { conversationsLoader }) => {
+        if (!conversationsLoader) return 0
+        const expand = ["total_unread_count"]
+        return conversationsLoader({ page: 1, size: 0, expand }).then(
+          ({ total_unread_count }) => total_unread_count
+        )
       },
     },
   },

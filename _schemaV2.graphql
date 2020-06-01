@@ -698,7 +698,9 @@ type Artist implements EntityWithFilterArtworksConnectionInterface & Node & Sear
     priceRange: String
     saleID: ID
     size: Int
-    sizeBuckets: [ArtworkSizes]
+
+    # Filter results by Artwork sizes
+    sizes: [ArtworkSizes]
     sort: String
     tagID: String
     width: String
@@ -4047,7 +4049,9 @@ interface EntityWithFilterArtworksConnectionInterface {
     priceRange: String
     saleID: ID
     size: Int
-    sizeBuckets: [ArtworkSizes]
+
+    # Filter results by Artwork sizes
+    sizes: [ArtworkSizes]
     sort: String
     tagID: String
     width: String
@@ -4185,7 +4189,9 @@ type Fair implements EntityWithFilterArtworksConnectionInterface & Node {
     priceRange: String
     saleID: ID
     size: Int
-    sizeBuckets: [ArtworkSizes]
+
+    # Filter results by Artwork sizes
+    sizes: [ArtworkSizes]
     sort: String
     tagID: String
     width: String
@@ -4785,7 +4791,9 @@ type Gene implements Node & Searchable {
     priceRange: String
     saleID: ID
     size: Int
-    sizeBuckets: [ArtworkSizes]
+
+    # Filter results by Artwork sizes
+    sizes: [ArtworkSizes]
     sort: String
     tagID: String
     width: String
@@ -5366,7 +5374,7 @@ type MarketingCollection {
     priceRange: String
     saleID: ID
     size: Int
-    sizeBuckets: [ArtworkSizes]
+    sizes: [ArtworkSizes]
     sort: String
     tagID: String
     width: String
@@ -5542,7 +5550,7 @@ type Me implements Node {
   # The current user's status relating to bids on artworks
   bidderStatus(artworkID: String!, saleID: String!): LotStanding
 
-  # Allow the user to request email confirmation if they do not have a confirmed email
+  # Whether user is allowed to request email confirmation
   canRequestEmailConfirmation: Boolean!
 
   # A collector profile.
@@ -5668,6 +5676,9 @@ type Me implements Node {
   ): ArtworkConnection
   secondFactors(kinds: [SecondFactorKind]): [SecondFactor]
   type: String
+
+  # The count of conversations with unread messages.
+  unreadConversationCount: Int!
 
   # A count of unread notifications.
   unreadNotificationsCount: Int!
@@ -6581,7 +6592,9 @@ type Query {
     priceRange: String
     saleID: ID
     size: Int
-    sizeBuckets: [ArtworkSizes]
+
+    # Filter results by Artwork sizes
+    sizes: [ArtworkSizes]
     sort: String
     tagID: String
     width: String
@@ -7737,7 +7750,9 @@ type Show implements EntityWithFilterArtworksConnectionInterface & Node {
     priceRange: String
     saleID: ID
     size: Int
-    sizeBuckets: [ArtworkSizes]
+
+    # Filter results by Artwork sizes
+    sizes: [ArtworkSizes]
     sort: String
     tagID: String
     width: String
@@ -8115,7 +8130,9 @@ type Tag implements Node {
     priceRange: String
     saleID: ID
     size: Int
-    sizeBuckets: [ArtworkSizes]
+
+    # Filter results by Artwork sizes
+    sizes: [ArtworkSizes]
     sort: String
     tagID: String
     width: String
@@ -8476,7 +8493,9 @@ type Viewer {
     priceRange: String
     saleID: ID
     size: Int
-    sizeBuckets: [ArtworkSizes]
+
+    # Filter results by Artwork sizes
+    sizes: [ArtworkSizes]
     sort: String
     tagID: String
     width: String
